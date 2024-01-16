@@ -1,0 +1,42 @@
+<p>directive works!</p>
+<div class="div-container" *ngIf="showDiv"></div>
+<button (click)="toggle()">Toggle</button>
+<ul>
+    <li>coffee</li>
+    <li>tea</li>
+    <li>milk</li>
+</ul>
+<ul>
+    <li>{{listItem }}</li>
+</ul>
+<!-- ng for -->
+<ul>
+    <li *ngFor="let items of listItem">{{items}} </li>
+</ul>
+
+<!-- ng if -->
+<div>
+    <p *ngIf="color === 'pink'">i like pink</p>
+</div>
+<!-- ng switvh -->
+<div [ngSwitch]="true">
+    <p *ngSwitchCase="color === 'pink'">i like {{color}}</p>
+    <p *ngSwitchCase="color === 'yellow'">i like {{color}}</p>
+    <p *ngSwitchCase="color === 'black'">i like {{color}}</p>
+    <p *ngSwitchDefault>i dont like color</p>
+<!-- ng style -->
+</div>
+<div style="color:red ; font-size:10px;">i love mumbai</div>
+<div [ngStyle]="{backgrondColor:getColor()}" >i like yellow</div>
+
+
+<div class="div-container1">i like india</div>
+<br> 
+<Div [class.div-container2]="journey == 'admin'"
+     [class.div-container]="journey == 'owner'"
+     [class.div-container]="journey == 'user'">i like india</Div>
+
+
+
+<br><br>
+<br><br><br>

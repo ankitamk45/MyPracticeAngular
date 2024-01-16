@@ -1,0 +1,40 @@
+<div class="form-container">
+    <h2>Login form</h2>
+    <form #loginForm = "ngForm">
+        
+        <label>UserName</label><br>
+        <input type="text"  #UserName='ngModel' ngModel name="uName" placeholder="enter your name"
+         pattern="^[a-zA-Z ]*$" minlength="2" maxlength="20" [(ngModel)]="name" ><br>
+        
+        <div *ngIf="UserName?.errors?.['required'] && UserName?.touched" class="error-message">
+        user name is required
+        </div>
+        
+        <div class="error-message" *ngIf="UserName?.errors?.['pattern'] && !UserName?.errors?.['minlength']">
+            Usernmae must be alphabetes
+        </div>
+        
+        <div class="error-message" *ngIf="UserName?.errors?.['minlength']">
+            min 8 char lenght
+        </div>
+        
+        <label>password</label><br> 
+        <input [type]="isShowPass ? 'text':'password'" #pass='ngModel' ngModel name="password" required pattern=" ">
+        <i class="bi bi-eye-fill eye-icon" (click)="toShowPassword()" *ngIf="isShowPass"> </i>
+        <i class="bi bi-eye-slash eye-icon2" (click)="toShowPassword()" *ngIf="!isShowPass"></i>
+        <div *ngIf="pass?.errors?.['required'] && pass?.touched" class="error-message">
+            pass is required
+        </div>
+        <div *ngIf="!pass.errors?.['pattern'] && pass?.touched" class="error-message">
+            invalid passord
+        </div>
+        
+        <br><br>
+     
+        <button (click)="login(loginForm.value)" [disabled]="loginForm.valid">Submit</button>
+
+        
+    </form>
+    <a routerLink="/user/signUp">click here to create account</a>
+</div>
+

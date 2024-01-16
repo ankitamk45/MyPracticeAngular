@@ -1,0 +1,13 @@
+.div-container{
+    height: 100px;
+    width:100px;
+    border : 3px solid;
+    background-color: aqua;
+}
+.div-container1{
+    background-color: red;
+}
+.div-container2{
+
+    background-color:rgb(0, 255, 106);
+}

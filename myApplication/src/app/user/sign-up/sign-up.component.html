@@ -1,0 +1,67 @@
+<div class="form-container">
+    <form [formGroup]="SignUpForm">
+        <mat-form-field class="form-field">
+            <mat-label>Full Name   </mat-label>
+            <input type="text" matInput formControlName="fullName">
+            <mat-hint *ngIf="!SignUpForm.get('fullName')?.touched">Please enter your Name</mat-hint>
+            <mat-error *ngIf="SignUpForm.get('fullName')?.errors?.['required'] && SignUpForm.get('fullName')?.touched">Full Name is required</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="form-field">
+            <mat-label>Mob No.   </mat-label>
+            <input type="text" matInput formControlName="mob">
+            <mat-hint>please enter mob no</mat-hint>
+            <mat-error *ngIf="SignUpForm.get('mob')?.errors?.['pattern'] && SignUpForm.get('mob')?.touched && !SignUpForm.get('mob')?.errors?.['maxLength'] "> invalid pattern</mat-error>
+            <mat-error *ngIf="SignUpForm.get('mob')?.errors?.['maxLength'] && SignUpForm.get('mob')?.touched">mobile number should not more than 10 digits</mat-error>
+
+        </mat-form-field>
+
+        <br>
+            <mat-label>Gender   </mat-label>
+            <mat-radio-group formControlName="gender">
+                <mat-radio-button  >Male </mat-radio-button>
+                <mat-radio-button > Female</mat-radio-button>
+                <mat-radio-button > Others</mat-radio-button>
+            </mat-radio-group>
+            <mat-error  *ngIf="!SignUpForm.get('gender')?.touched">gender is required</mat-error>
+        <br>
+        <mat-form-field class="form-field">
+            <mat-label>Pan Card  </mat-label>
+           <input type="text" matInput formControlName="pan">
+        </mat-form-field>
+        <mat-error *ngIf="!SignUpForm.get('pan')?.touched">Pan No is required</mat-error>
+
+        <br>
+        <!-- <mat-form-field class="form-field">
+            <mat-label>Password   </mat-label>
+            <input type="text" matInput formControlName="password">
+
+        </mat-form-field> -->
+        <mat-error>Password is required</mat-error>
+        <div class="example-container">
+            <mat-form-field class="form-field">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+        <br>
+        <!-- <mat-form-field class="form-field">
+            <mat-label>Confirm Password  </mat-label>
+            <input type="text" matInput formControlName="confirmpass">
+        </mat-form-field>
+        <mat-error>confirm pass is required</mat-error> -->
+        <mat-error>confirm password</mat-error>
+        <div class="example-container">
+            <mat-form-field class="form-field">
+              <mat-label>Again Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+        <br>
+        <button mat-raised-button color="accent" class="btn" >Submit</button>
+
+    </div>
